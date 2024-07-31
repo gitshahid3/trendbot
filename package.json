@@ -1,0 +1,17 @@
+{
+  "name": "TGBot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "emoji-regex": "^10.3.0",
+    "mongodb": "^6.8.0",
+    "node-localstorage": "^3.0.5",
+    "node-telegram-bot-api": "^0.66.0",
+    "puppeteer": "^22.13.1",
+    "puppeteer-extra": "^3.3.6",
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "tonweb": "^0.0.66"
+  }
+}
