@@ -527,12 +527,14 @@ async function startTrending() {
             } 
             if (lastLeaderboardInterval + 180 <= Math.ceil(Date.now() / 1000)) {
                 const leaderboardArray = await displayLeaderboard();
-                let leaderboardText = `LEADERBOARD!!!\n`;
-                leaderboardArray.forEach((lToken, index) => {
-                    leaderboardText += `\n${(index + 1).toString()} - ${lToken[0]} | ${lToken[1].toString()}%`;
-                });
-                bot.sendMessage(channelId, leaderboardText);
-                lastLeaderboardInterval = Math.ceil(Date.now() / 1000);
+                if (leaderboardArray.length > 0) {
+                    let leaderboardText = `LEADERBOARD!!!\n`;
+                    leaderboardArray.forEach((lToken, index) => {
+                        leaderboardText += `\n${(index + 1).toString()} - ${lToken[0]} | ${lToken[1].toString()}%`;
+                    });
+                    bot.sendMessage(channelId, leaderboardText);
+                    lastLeaderboardInterval = Math.ceil(Date.now() / 1000);
+                }
             }
         } catch (error) {
             console.log(error)
