@@ -398,7 +398,7 @@ bot.onText(/\/cancel/, (msg) => {
 bot.on('message', async (msg) => {
     const chatId = msg.chat.id;
     const userId = msg.from.id;
-    const params = msg.text.split(' ');
+    let params;
     const state = ls.getItem('state.' + userId.toString());
     let isBusy = false;
 
@@ -407,6 +407,12 @@ bot.on('message', async (msg) => {
     } else {
         ls.removeItem('state.' + userId.toString());
         clearUserId(userId);
+    }
+
+    if (msg.text) {
+        params = msg.text.split(' ');
+    } else {
+        isBusy = false;
     }
 
     if (state == 'cashin.contractaddress' && isBusy) {
